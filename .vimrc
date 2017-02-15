@@ -23,14 +23,20 @@ Plugin 'gmarik/Vundle.vim'
 " YOUR LIST OF PLUGINS GOES HERE LIKE THIS:
 Plugin 'bling/vim-airline'
 Plugin 'elzr/vim-json'
+":Gstatus :Gblame :Gmove :Gremove :Gread :Gwrite"
+Plugin 'tpope/vim-git'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 Plugin 'junegunn/goyo.vim'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'godlygeek/tabular'
 "Sensible defaults
 "Plugin 'tpope/vim-sensible'
+":Unlink :Remove :Move :Chmod :Find :Locate
+":Wall
 ":SudoWrite / :SudoEdit / :Chmod
-"Plugin 'tpope/vim-eunuch'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'tpope/vim-eunuch'
 Plugin 'puppetlabs/puppet-syntax-vim'
 Plugin 'philippeback/vim-urbit'
 "Plugin 'fatih/vim-go'
@@ -55,6 +61,18 @@ let mapleader = ";"
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
+
+
+"#Syntastic"
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+"#/Syntastic"
 
 set diffexpr=MyDiff()
 function! MyDiff()
@@ -198,7 +216,7 @@ if has("macunix")
   set guifont=Source\ Code\ Pro_Bold:h16
 endif
 
-set guifont="Monospace:h14"
+set guifont="Hack:h14"
 
 " Annoying little critter on belgian keyboard making it hard to type C-]
 " No need to, as C-$ works map <C-l> <C-]>
